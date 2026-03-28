@@ -19,6 +19,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const authRoutes = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const matchRoutes = require('./routes/matchRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'Server is running' });
 });
 
+app.use('/auth', authRoutes);
 app.use('/', profileRoutes);
 app.use('/', matchRoutes);
 app.use('/api', uploadRoutes);
